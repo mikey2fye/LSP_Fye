@@ -7,8 +7,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * making our own data structure
- * complete with functions and an error
+ * Creating our own data structure
+ * 
+ * Complete with multiple functions and an error
  * 
  * @author Michael
  *
@@ -46,14 +47,6 @@ public class IntegerSet {
 		intSet = newSet;
 	}
 	
-	//Time Complexity: O(n)
-	/**
-	 * Clears the integer set using the built in ArrayList function clear()
-	 */
-	public void clear() {
-		intSet.clear();
-	}
-	
 	//Time Complexity: O(1)
 	/**
 	 * Returns the size of the array list
@@ -64,6 +57,14 @@ public class IntegerSet {
 		return intSet.size();
 	}
 	
+	//Time Complexity: O(n)
+	/**
+	 * Clears the integer set using the built in ArrayList function clear()
+	 */
+	public void clear() {
+		intSet.clear();
+	}
+		
 	//Time Complexity: O(n)
 	/**
 	 * Checks to see if IntegerSet x is a replica of intSet 
@@ -112,41 +113,41 @@ public class IntegerSet {
 			super(error);
 		}
 	}
-	//(O(N))
+	//Time complexity: O(n)
 	/**
-	 * returns the largest number in the set
+	 * Returns the largest number of the set
 	 * 
-	 * @return integer the represents the largest value in the set
+	 * @return Integer that represents the largest value of the set
 	 * 
-	 * @throws IntegerSetException custom exception instance
+	 * @throws custom IntegerSetException exception instance
 	 */
 	public int largest() throws IntegerSetException {
 		//if the set is empty, throws an exception saying so
 		if (intSet.isEmpty()) {
-			throw new IntegerSetException("The Set is Empty.");
+			throw new IntegerSetException("The set is empty.");
 		}
 		//search through the set and find the largest integer
 		else {
 			//set our comparison to something in the set already
-			int large = intSet.get(0);
+			int largest = intSet.get(0);
 			//iterate through the set and compare the values to large
 			for (int i = 0; i < intSet.size(); i++) {
 				//set large to the bigger integer if found
-				if (intSet.get(i) > large) {
-					large = intSet.get(i);
+				if (intSet.get(i) > largest) {
+					largest = intSet.get(i);
 				}
 			}
-			return large;
+			return largest;
 		}
 	}
 	
-	//(O(N))
+	//Time complexity: O(n)
 	/**
-	 * returns the smallest integer in the set
+	 * Returns the smallest integer of the set
 	 * 
-	 * @return integer that represents the smallest value in the set
+	 * @return Integer that represents the smallest value of the set
 	 * 
-	 * @throws IntegerSetException custom exception instance
+	 * @throws custom IntegerSetException exception instance
 	 */
 	public int smallest() throws IntegerSetException {
 		//if the set is empty, throws an exception saying so
@@ -156,83 +157,83 @@ public class IntegerSet {
 		//search through the set and find the smallest integer
 		else {
 			//set our comparison to something in the set already
-			int small = intSet.get(0);
+			int smallest = intSet.get(0);
 			
 			//iterate through the set and compare the values to small
 			for (int i = 0; i < intSet.size(); i++) {
 				//set small to the smaller integer if found
-				if (intSet.get(i) < small) {
-					small = intSet.get(i);
+				if (intSet.get(i) < smallest) {
+					smallest = intSet.get(i);
 				}
 			}
-			return small;
+			return smallest;
 		}
 	}
-	//(O(N))
+	//Time complexity: O(n)
 	/**
-	 * adds an integer to the set if it is not present
+	 * Adds an integer to the set if it is not already present
 	 * 
-	 * @param item integer instance to check
+	 * @param num integer instance to check
 	 */
-	public void add(int item) {
-		if (intSet.contains(item) == false) {
-			intSet.add(item);
-		}
-	}
-	
-	//(O(N))
-	/**
-	 * removes an integer from the set if it is present
-	 * 
-	 * @param item integer instance to check
-	 */
-	public void remove(int item) {
-		if (intSet.contains(item) == true) {
-			intSet.remove(intSet.indexOf(item));
+	public void add(int num) {
+		if (intSet.contains(num) == false) {
+			intSet.add(num);
 		}
 	}
 	
-	//(O(N))
+	//Time complexity: O(n)
 	/**
-	 * calculates the union of two sets
+	 * Removes an integer from the set if it is not already present
 	 * 
-	 * @param b IntegerSet instance to compare
+	 * @param num integer instance to check
 	 */
-	public void union(IntegerSet b) {
-		for (int i = 0; i < b.length(); i++) {
-			if (intSet.contains(b.intSet.get(i)) == false) {
-				intSet.add(b.intSet.get(i));
+	public void remove(int num) {
+		if (intSet.contains(num) == true) {
+			intSet.remove(intSet.indexOf(num));
+		}
+	}
+	
+	//Time complexity: O(n)
+	/**
+	 * Calculates the union of two sets
+	 * 
+	 * @param y IntegerSet instance to compare
+	 */
+	public void union(IntegerSet y) {
+		for (int i = 0; i < y.length(); i++) {
+			if (intSet.contains(y.intSet.get(i)) == false) {
+				intSet.add(y.intSet.get(i));
 			}
 		}
 	}
 	
-	//(O(N))
+	//Time complexity: O(n)
 	/**
-	 * calculates the intersection of two sets
+	 * Calculates the intersection of two sets
 	 * 
-	 * @param b IntegerSet instance to compare
+	 * @param y IntegerSet instance to compare
 	 */
-	public void intersect(IntegerSet b) {
-		intSet.retainAll(b.intSet);
+	public void intersect(IntegerSet y) {
+		intSet.retainAll(y.intSet);
 	}
 	
-	//(O(N))
+	//Time complexity: O(n)
 	/**
-	 * calculates the difference of two sets
+	 * Calculates the difference of two sets
 	 * 
-	 * @param b IntegerSet instance to compare
+	 * @param y IntegerSet instance to compare
 	 */
-	public void diff(IntegerSet b) {
-		for (int i = 0; i < b.length(); i++) {
-			if (intSet.contains(b.intSet.get(i)) == true) {
-				intSet.remove(b.intSet.get(i));
+	public void diff(IntegerSet y) {
+		for (int i = 0; i < y.length(); i++) {
+			if (intSet.contains(y.intSet.get(i)) == true) {
+				intSet.remove(y.intSet.get(i));
 			}
 		}
 	}
 	
-	//(O(1))
+	//Time complexity: O(1)
 	/**
-	 * checks if the set is empty
+	 * Checks to see if the set is empty
 	 * 
 	 * @return true if empty, otherwise false
 	 */
@@ -240,17 +241,17 @@ public class IntegerSet {
 		return intSet.isEmpty();
 	}
 	
-	//(O(N))
+	//Time complexity: O(n)
 	/**
 	 * prints every integer in the set
 	 * 
 	 * @return String formatted to hold every integer in the set
 	 */
 	public String toString() {
-		String list = "";
+		String num_list = "";
 		for (int i = 0; i < intSet.size(); i++) {
-			list += intSet.get(i).toString() + ", ";
+			num_list += intSet.get(i).toString() + ", ";
 		}
-		return list;
+		return num_list;
 	}
 }
