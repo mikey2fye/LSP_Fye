@@ -5,6 +5,7 @@ package org.howard.edu.hw4;
 
 import java.util.ArrayList;
 import java.util.List;
+
 /**
  * making our own data structure
  * complete with functions and an error
@@ -25,68 +26,68 @@ public class IntegerSet {
 		intSet = new ArrayList<Integer>();
 	}
 	
-	//(O(1))
+	//Time Complexity: O(1)
 	/**
-	 * getter method
+	 * Get method
 	 * 
-	 * @return ArrayList containing all integers in the set
+	 * @return An ArrayList containing all of the integers in the set
 	 */
 	public List<Integer> get_set() {
 		return intSet;
 	}
 	
-	//(O(1))
+	//Time Complexity: O(1)
 	/**
-	 * setter method
+	 * Set method - replaces the contents of intSet with the ArrayList of integers from newSet
 	 * 
-	 * @param new_set List instance to declare to
+	 * @param newSet List instance to declare to
 	 */
-	public void set_set(List<Integer> new_set) {
-		intSet = new_set;
+	public void set_set(List<Integer> newSet) {
+		intSet = newSet;
 	}
 	
-	//(O(N))
+	//Time Complexity: O(n)
 	/**
-	 * clears the integer set using the ArrayList function clear()
+	 * Clears the integer set using the built in ArrayList function clear()
 	 */
 	public void clear() {
 		intSet.clear();
 	}
 	
-	//(O(1))
+	//Time Complexity: O(1)
 	/**
-	 * returns the size of the array list
+	 * Returns the size of the array list
 	 * 
-	 * @return integer which represents the size of the list
+	 * @return Integer which represents the size of the list
 	 */
 	public int length() {
 		return intSet.size();
 	}
 	
-	//(O(N))
+	//Time Complexity: O(n)
 	/**
-	 * checks if IntegerSet a is the exact same 
+	 * Checks to see if IntegerSet x is a replica of intSet 
 	 * 
-	 * @param a IntegerSet instance to compare
+	 * @param x IntegerSet instance to compare
 	 * 
 	 * @return false if unequal, otherwise true
 	 */
-	public boolean equals(IntegerSet a) {
+	public boolean equals(IntegerSet x) {
 		//if they have different lengths they cannot be equal
-		if (intSet.size() != a.length()) {
+		if (intSet.size() != x.length()) {
 			return false;
 		}
 		//if they have equal lengths check if all elements are the same
 		else {
-			return intSet.containsAll(a.intSet);
+			return intSet.containsAll(x.intSet);
 		}
 	}
 	
-	//(O(N))
+	//Time Complexity: O(n)
 	/**
-	 * check if the IntegerSet contains a value
+	 * Checks to see if the IntegerSet contains a value
 	 * 
-	 * @param value integer instance to check
+	 * @param Value of integer instance to check
 	 * 
 	 * @return false if absent, otherwise true
 	 */
