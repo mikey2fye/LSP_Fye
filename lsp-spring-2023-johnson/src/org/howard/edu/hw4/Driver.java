@@ -43,7 +43,7 @@ public class Driver {
 			set1.remove(100);
 			System.out.println("New value of Set 1: " + set1.toString() + "\n"); 
 			
-			//testing isEmpty() 
+			//Testing isEmpty() 
 			System.out.println("Set 1 is Empty (true/false)");
 			System.out.println(set1.isEmpty() + "\n"); 
 			
@@ -71,8 +71,8 @@ public class Driver {
 			
 			//testing union()
 			System.out.println("Union of Set 1 and Set 2");
-			set1.union(set2);	// union of set1 and set2
-			System.out.println(set1.toString() + "\n");	// result of union of set1 and set2
+			set1.union(set2);	
+			System.out.println(set1.toString() + "\n");	
 			
 			set1.clear();
 			for (int i = 1; i <= 10; i++) {
@@ -84,8 +84,8 @@ public class Driver {
 			}
 			
 			System.out.println("Difference of Set 1 and Set 2");
-			set1.diff(set2); //difference of set1 and set2
-			System.out.println(set1.toString() + "\n"); //result of difference of set1 and set2
+			set1.diff(set2); 
+			System.out.println(set1.toString() + "\n"); 
 			set1.clear();
 			for (int i = 1; i <= 10; i++) {
 				set1.add(i);
@@ -96,8 +96,8 @@ public class Driver {
 			}
 			
 			System.out.println("Difference of Set 2 and Set 1");
-			set2.diff(set1); //difference of set2 and set1
-			System.out.println(set2.toString() + "\n"); //result of difference of set2 and set1
+			set2.diff(set1); 
+			System.out.println(set2.toString() + "\n"); 
 			set1.clear();
 			for (int i = 1; i <= 10; i++) {
 				set1.add(i);
@@ -108,8 +108,8 @@ public class Driver {
 			}
 			
 			System.out.println("Intersection of Set 1 and Set 2");
-			set1.intersect(set2); //intersection of set1 and set2
-			System.out.println(set1.toString() + "\n"); //result of intersection of set1 and set2
+			set1.intersect(set2); 
+			System.out.println(set1.toString() + "\n"); 
 			set1.clear();
 			for (int i = 1; i <= 10; i++) {
 				set1.add(i);
@@ -119,14 +119,14 @@ public class Driver {
 				set2.add(i);
 			}
 			System.out.println("Are Set 1 and Set 2 equal?");
-			System.out.println(set1.equals(set2) + "\n"); //result of equal on set1 and set 2
+			System.out.println(set1.equals(set2) + "\n"); 
 			
 			System.out.println("Catching the exception");
-			set1.clear(); //need the list to be empty
-			set1.largest(); //largest throws the exception when the set is empty
+			set1.clear(); 
+			set1.largest(); 
 		}
 		catch (IntegerSetException err) {
-			System.out.println(err); //prints the exception
+			System.out.println(err); 
 		}
 
 	}
