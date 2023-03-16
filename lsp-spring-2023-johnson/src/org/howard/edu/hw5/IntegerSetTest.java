@@ -13,26 +13,26 @@ public class IntegerSetTest {
 	private IntegerSet myIntSet;
 
 	@BeforeEach
-	void setUp() throws Exception {
+	public void setUp() throws Exception {
 		myIntSet = new IntegerSet();
 	}
 
 	@AfterEach
-	void tearDown() throws Exception {
+	public void tearDown() throws Exception {
 		myIntSet = null;
 	}
 		
 	@Test
 	@DisplayName("Test case for clear")
-	void testClear() {
+	public void testClear() {
 		myIntSet.add(1);
 		myIntSet.clear();
-		assertEquals(myIntSet.int_set.size(), 0);
+		assertEquals(myIntSet.intSet.size(), 0);
 	}
 	
 	@Test
 	@DisplayName("Test case for length")
-	void testLength() {
+	public void testLength() {
 		myIntSet.add(5);
 		myIntSet.add(10);
 		myIntSet.add(15);
@@ -42,138 +42,138 @@ public class IntegerSetTest {
 	
 	@Test
 	@DisplayName("Test case for equals")
-	void testEquals() {
-		IntegerSet compare_set = new IntegerSet();
-		that_set.add(1);
-		my_set.add(1);
-		assertTrue(my_set.equals(compare_set));
+	public void testEquals() {
+		IntegerSet compareSet = new IntegerSet();
+		compareSet.add(1);
+		myIntSet.add(1);
+		assertTrue(myIntSet.equals(compareSet));
 	}
 	
 	@Test
 	@DisplayName("Test case for contains")
-	void testContains() {
-		my_set.add(35);
-		assertTrue(my_set.contains(35));
+	public void testContains() {
+		myIntSet.add(35);
+		assertTrue(myIntSet.contains(35));
 	}
 	
 	@Test
 	@DisplayName("Test case for largest")
-	void testLargest() throws IntegerSetException {
-		my_set.add(10);
-		my_set.add(20);
-		my_set.add(30);
-		my_set.add(40);
-		my_set.add(50);
-		assertTrue(my_set.largest() == 50);
+	public void testLargest() throws IntegerSetException {
+		myIntSet.add(10);
+		myIntSet.add(20);
+		myIntSet.add(30);
+		myIntSet.add(40);
+		myIntSet.add(50);
+		assertTrue(myIntSet.largest() == 50);
 	}
 	
 	@Test
 	@DisplayName("Test case for largest exception")
-	void testLargestException() {
+	public void testLargestException() {
 		assertThrows(IntegerSetException.class, () -> my_set.largest());
 	}
 	
 	@Test
 	@DisplayName("Test case for smallest")
-	void testSmallest() throws IntegerSetException {
-		my_set.add(20);
-		my_set.add(40);
-		my_set.add(60);
-		my_set.add(80);
-		assertTrue(my_set.smallest() == 20);
+	public void testSmallest() throws IntegerSetException {
+		myIntSet.add(20);
+		myIntSet.add(40);
+		myIntSet.add(60);
+		myIntSet.add(80);
+		assertTrue(myIntSet.smallest() == 20);
 	}
 	
 	@Test
 	@DisplayName("Test case for smallest exception")
-	void testSmallestException() {
+	public void testSmallestException() {
 		assertThrows(IntegerSetException.class, () -> my_set.smallest());
 	}
 	
 	@Test
 	@DisplayName("Test case for add")
-	void testAdd() {
-		IntegerSet that_set = new IntegerSet();
-		that_set.add(2);
-		that_set.add(4);
-		that_set.add(6);
+	public void testAdd() {
+		IntegerSet newSet = new IntegerSet();
+		newSet.add(2);
+		newSet.add(4);
+		newSet.add(6);
 		
-		my_set.add(2);
-		my_set.add(4);
-		my_set.add(6);
+		myIntSet.add(2);
+		myIntSet.add(4);
+		myIntSet.add(6);
 		
-		assertTrue(that_set.equals(my_set));
+		assertTrue(newSet.equals(myIntSet));
 	}
 	
 	@Test
 	@DisplayName("Test case for remove")
-	void testRemove() {
-		my_set.add(50);
-		my_set.add(100);
-		my_set.add(150);
-		my_set.remove(150);
+	public void testRemove() {
+		myIntSet.add(50);
+		myIntSet.add(100);
+		myIntSet.add(150);
+		myIntSet.remove(150);
 		
-		assertFalse(my_set.contains(150));
+		assertFalse(myIntSet.contains(150));
 	}
 	
 	@Test
 	@DisplayName("Test case for union")
-	void testUnion() {
-		IntegerSet that_set = new IntegerSet();
+	public void testUnion() {
+		IntegerSet compareSet = new IntegerSet();
 		my_set.add(1);
 		my_set.add(2);
 		my_set.add(3);
 		my_set.add(4);
 		
-		that_set.add(5);
-		that_set.add(6);
+		compareSet.add(5);
+		compareSet.add(6);
 		
-		my_set.union(that_set);
+		my_set.union(compareSet);
 		assertEquals(my_set.int_set, new ArrayList<Integer>(Arrays.asList(1, 2, 3, 4, 5, 6)));
 	}
 	
 	@Test
 	@DisplayName("Test case for intersect")
-	void testIntersect() {
-		IntegerSet that_set = new IntegerSet();
+	public void testIntersect() {
+		IntegerSet compareSet = new IntegerSet();
 		my_set.add(5);
 		my_set.add(10);
 		my_set.add(15);
 		my_set.add(20);
 		
-		that_set.add(10);
-		that_set.add(20);
-		that_set.add(30);
-		that_set.add(40);
+		compareSet.add(10);
+		compareSet.add(20);
+		compareSet.add(30);
+		compareSet.add(40);
 		
-		my_set.intersect(that_set);
+		my_set.intersect(compareSet);
 		assertEquals(my_set.int_set, new ArrayList<Integer>(Arrays.asList(10, 20)));
 	}
 	
 	@Test
 	@DisplayName("Test case for difference")
-	void testDifference() {
-		IntegerSet that_set = new IntegerSet();
+	public void testDifference() {
+		IntegerSet compareSet = new IntegerSet();
 		my_set.add(20);
 		my_set.add(40);
 		my_set.add(60);
 		
-		that_set.add(30);
-		that_set.add(40);
-		that_set.add(50);
+		compareSet.add(30);
+		compareSet.add(40);
+		compareSet.add(50);
 		
-		my_set.diff(that_set);
+		my_set.diff(compareSet);
 		assertEquals(my_set.int_set, new ArrayList<Integer>(Arrays.asList(20, 60)));
 	}
 	
 	@Test
 	@DisplayName("Test case for isEmpty")
-	void testEmpty() {
+	public void testEmpty() {
 		assertTrue(my_set.isEmpty());
 	}
 	
 	@Test
 	@DisplayName("Test case for toString")
-	void testString() {
+	public void testString() {
 		my_set.add(1);
 		my_set.add(2);
 		my_set.add(3);
