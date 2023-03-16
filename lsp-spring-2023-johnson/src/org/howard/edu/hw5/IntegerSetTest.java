@@ -1,51 +1,52 @@
 package org.howard.edu.hw5;
 import org.howard.edu.hw5.IntegerSet.IntegerSetException;
-import static org.junit.jupiter.api.Assertions.*;
+import java.util.*;
+import static org.junit.Assert.assertEquals;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.DisplayName;
-import java.util.*;
 
-class IntegerSetTest {
+
+public class IntegerSetTest {
 	
-	IntegerSet my_set;
+	private IntegerSet myIntSet;
 
 	@BeforeEach
 	void setUp() throws Exception {
-		my_set = new IntegerSet();
+		myIntSet = new IntegerSet();
 	}
 
 	@AfterEach
 	void tearDown() throws Exception {
-		my_set = null;
+		myIntSet = null;
 	}
 		
 	@Test
 	@DisplayName("Test case for clear")
 	void testClear() {
-		my_set.add(1);
-		my_set.clear();
-		assertEquals(my_set.int_set.size(), 0);
+		myIntSet.add(1);
+		myIntSet.clear();
+		assertEquals(myIntSet.int_set.size(), 0);
 	}
 	
 	@Test
 	@DisplayName("Test case for length")
 	void testLength() {
-		my_set.add(5);
-		my_set.add(10);
-		my_set.add(15);
-		my_set.add(20);
-		assertTrue(my_set.length() == 4);
+		myIntSet.add(5);
+		myIntSet.add(10);
+		myIntSet.add(15);
+		myIntSet.add(20);
+		assertTrue(myIntSet.length() == 4);
 	}
 	
 	@Test
 	@DisplayName("Test case for equals")
 	void testEquals() {
-		IntegerSet that_set = new IntegerSet();
+		IntegerSet compare_set = new IntegerSet();
 		that_set.add(1);
 		my_set.add(1);
-		assertTrue(my_set.equals(that_set));
+		assertTrue(my_set.equals(compare_set));
 	}
 	
 	@Test
@@ -130,3 +131,55 @@ class IntegerSetTest {
 		assertEquals(my_set.int_set, new ArrayList<Integer>(Arrays.asList(1, 2, 3, 4, 5, 6)));
 	}
 	
+	@Test
+	@DisplayName("Test case for intersect")
+	void testIntersect() {
+		IntegerSet that_set = new IntegerSet();
+		my_set.add(5);
+		my_set.add(10);
+		my_set.add(15);
+		my_set.add(20);
+		
+		that_set.add(10);
+		that_set.add(20);
+		that_set.add(30);
+		that_set.add(40);
+		
+		my_set.intersect(that_set);
+		assertEquals(my_set.int_set, new ArrayList<Integer>(Arrays.asList(10, 20)));
+	}
+	
+	@Test
+	@DisplayName("Test case for difference")
+	void testDifference() {
+		IntegerSet that_set = new IntegerSet();
+		my_set.add(20);
+		my_set.add(40);
+		my_set.add(60);
+		
+		that_set.add(30);
+		that_set.add(40);
+		that_set.add(50);
+		
+		my_set.diff(that_set);
+		assertEquals(my_set.int_set, new ArrayList<Integer>(Arrays.asList(20, 60)));
+	}
+	
+	@Test
+	@DisplayName("Test case for isEmpty")
+	void testEmpty() {
+		assertTrue(my_set.isEmpty());
+	}
+	
+	@Test
+	@DisplayName("Test case for toString")
+	void testString() {
+		my_set.add(1);
+		my_set.add(2);
+		my_set.add(3);
+		my_set.add(4);
+		my_set.add(5);
+		
+		assertEquals(my_set.toString(), "1, 2, 3, 4, 5, ");
+	}
+}	
