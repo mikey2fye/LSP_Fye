@@ -28,9 +28,19 @@ public class IntegerSetTest extends junit.framework.TestCase{
 	@DisplayName("Test clear")
 	public void testClear() {
 		setUp();
+		IntegerSet myOtherSet = new IntegerSet();
 		myIntSet.add(7);
+		myIntSet.add(17);
+		myIntSet.add(72);
 		myIntSet.clear();
 		assertEquals(myIntSet.length(), 0);
+		
+		myOtherSet.add(4);
+		myOtherSet.add(14);
+		myOtherSet.add(43);
+		myOtherSet.clear();
+		assertEquals(myOtherSet.length(), 0);
+		tearDown();
 	}
 	
 	@Test
@@ -43,16 +53,18 @@ public class IntegerSetTest extends junit.framework.TestCase{
 		myIntSet.add(16);
 		myIntSet.add(20);
 		assertEquals(myIntSet.length(), 5);
+		tearDown();
 	}
 	
 	@Test
 	@DisplayName("Test equals")
 	public void testEquals() {
 		setUp();
-		IntegerSet compareSet = new IntegerSet();
-		compareSet.add(8);
+		IntegerSet myOtherSet = new IntegerSet();
+		myOtherSet.add(8);
 		myIntSet.add(8);
-		assertTrue(myIntSet.equals(compareSet) == true);
+		assertEquals(myIntSet.equals(myOtherSet), true);
+		tearDown();
 	}
 	
 	@Test
@@ -60,7 +72,11 @@ public class IntegerSetTest extends junit.framework.TestCase{
 	public void testContains() {
 		setUp();
 		myIntSet.add(35);
-		assertTrue(myIntSet.contains(35));
+		myIntSet.add(45);
+		myIntSet.add(55);
+		assertEquals(myIntSet.contains(35), true);
+		assertEquals(myIntSet.contains(65), false);
+		tearDown();
 	}
 	
 	@Test
@@ -72,14 +88,16 @@ public class IntegerSetTest extends junit.framework.TestCase{
 		myIntSet.add(30);
 		myIntSet.add(40);
 		myIntSet.add(50);
-		assertTrue(myIntSet.largest() == 50);
+		assertEquals(myIntSet.largest(), 50);
+		tearDown();
 	}
 	
 	@Test
 	@DisplayName("Test largest exception")
 	public void testLargestException() {
 		setUp();
-		assertTrue(IntegerSetException.class, () -> myIntSet.largest());
+		assertThrows(IntegerSetException.class, () -> myIntSet.largest());
+		tearDown();
 	}
 	
 	@Test
@@ -91,6 +109,7 @@ public class IntegerSetTest extends junit.framework.TestCase{
 		myIntSet.add(60);
 		myIntSet.add(80);
 		assertEquals(myIntSet.smallest(), 20);
+		tearDown();
 	}
 	
 	@Test
@@ -98,6 +117,7 @@ public class IntegerSetTest extends junit.framework.TestCase{
 	public void testSmallestException() {
 		setUp();
 		assertThrows(IntegerSetException.class, () -> my_set.smallest());
+		tearDown();
 	}
 	
 	@Test
@@ -114,6 +134,7 @@ public class IntegerSetTest extends junit.framework.TestCase{
 		myIntSet.add(6);
 		
 		assertEquals(newSet, myIntSet);
+		tearDown();
 	}
 	
 	@Test
@@ -127,6 +148,7 @@ public class IntegerSetTest extends junit.framework.TestCase{
 		myIntSet.remove(200);
 		
 		assertFalse(myIntSet.contains(200));
+		tearDown();
 	}
 	
 	@Test
@@ -144,49 +166,69 @@ public class IntegerSetTest extends junit.framework.TestCase{
 		
 		myIntSet.union(compareSet);
 		assertEquals(myIntSet, new ArrayList<Integer>(Arrays.asList(1, 2, 3, 4, 5, 6)));
+		tearDown();
 	}
 	
 	@Test
 	@DisplayName("Test case for intersect")
 	public void testIntersect() {
 		setUp();
-		IntegerSet compareSet = new IntegerSet();
+		IntegerSet myOtherSet = new IntegerSet();
 		myIntSet.add(5);
 		myIntSet.add(10);
 		myIntSet.add(15);
 		myIntSet.add(20);
 		
+		myOtherSet.add(10);
+		myOtherSet.add(20);
+		myOtherSet.add(30);
+		myOtherSet.add(40);
+		
+		//Creating a set to hold the correct output for the test case
+		IntegerSet compareSet = new IntegerSet();
 		compareSet.add(10);
 		compareSet.add(20);
-		compareSet.add(30);
-		compareSet.add(40);
-	
-		assertEquals(myIntSet.intersect(compareSet), new ArrayList<Integer>(Arrays.asList(10, 20)));
+		
+		myIntSet.intersect(myOtherSet);
+		assertEquals(myIntSet.toString(), compareSet.toString());
+		tearDown();
 	}
 	
 	@Test
 	@DisplayName("Test case for difference")
 	public void testDifference() {
 		setUp();
-		IntegerSet compareSet = new IntegerSet();
+		IntegerSet myOtherSet = new IntegerSet();
 		myIntSet.add(15);
 		myIntSet.add(30);
 		myIntSet.add(45);
 		myIntSet.add(60);
 		
-		compareSet.add(30);
-		compareSet.add(40);
-		compareSet.add(50);
-		compareSet.add(60);
+		myOtherSet.add(30);
+		myOtherSet.add(40);
+		myOtherSet.add(60);
 		
-		assertEquals(myIntSet.diff(compareSet)).toString(), "30, 60");
+		//Creating a set to hold the correct output for the test case
+		IntegerSet compareSet = new IntegerSet();
+		compareSet.add(15);
+		compareSet.add(45);
+		
+		myIntSet.diff(myOtherSet);
+		assertEquals(myIntSet.toString(), compareSet.toString());
+		tearDown();
 	}
 	
 	@Test
 	@DisplayName("Test case for isEmpty")
 	public void testEmpty() {
 		setUp();
-		assertTrue(myIntSet.isEmpty());
+		
+		//True case
+		assertEquals(myIntSet.isEmpty(), true);
+		
+		//False case
+		myIntSet.add(88);
+		assertEquals(myIntSet.isEmpty(), false);
 	}
 	
 	@Test
@@ -198,6 +240,6 @@ public class IntegerSetTest extends junit.framework.TestCase{
 		myIntSet.add(6);
 		myIntSet.add(8);
 		
-		assertEquals(myIntSet.toString(), "2, 4, 6, 8");
+		assertEquals(myIntSet.toString(), "2, 4, 6, 8 ");
 	}
 }	
