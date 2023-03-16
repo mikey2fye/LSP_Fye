@@ -103,6 +103,8 @@ public class IntegerSet {
 	 *
 	 */
 	public class IntegerSetException extends Exception {
+		private static final long serialVersionUID = 1L;
+
 		/**
 		 * Prints out an error
 		 * 

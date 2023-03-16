@@ -1,6 +1,6 @@
 package org.howard.edu.hw5;
-import org.howard.edu.hw4.IntegerSet.IntegerSetException;
-import org.howard.edu.hw4.IntegerSet;
+import org.howard.edu.hw5.IntegerSet.IntegerSetException;
+import org.howard.edu.hw5.IntegerSet;
 import java.util.*;
 import static org.junit.Assert.assertEquals;
 import org.junit.jupiter.api.AfterEach;
@@ -147,7 +147,7 @@ public class IntegerSetTest extends junit.framework.TestCase{
 		myIntSet.add(1000);
 		myIntSet.remove(200);
 		
-		assertFalse(myIntSet.contains(200));
+		assertEquals(myIntSet.contains(200), true);
 		tearDown();
 	}
 	
