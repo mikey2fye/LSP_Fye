@@ -58,6 +58,7 @@ public class IntegerSetTest extends junit.framework.TestCase{
 	@Test
 	@DisplayName("Test contains")
 	public void testContains() {
+		setUp();
 		myIntSet.add(35);
 		assertTrue(myIntSet.contains(35));
 	}
@@ -65,6 +66,7 @@ public class IntegerSetTest extends junit.framework.TestCase{
 	@Test
 	@DisplayName("Test largest")
 	public void testLargest() throws IntegerSetException {
+		setUp();
 		myIntSet.add(10);
 		myIntSet.add(20);
 		myIntSet.add(30);
@@ -94,6 +96,7 @@ public class IntegerSetTest extends junit.framework.TestCase{
 	@Test
 	@DisplayName("Test smallest exception")
 	public void testSmallestException() {
+		setUp();
 		assertThrows(IntegerSetException.class, () -> my_set.smallest());
 	}
 	
@@ -164,6 +167,7 @@ public class IntegerSetTest extends junit.framework.TestCase{
 	@Test
 	@DisplayName("Test case for difference")
 	public void testDifference() {
+		setUp();
 		IntegerSet compareSet = new IntegerSet();
 		myIntSet.add(15);
 		myIntSet.add(30);
@@ -181,12 +185,14 @@ public class IntegerSetTest extends junit.framework.TestCase{
 	@Test
 	@DisplayName("Test case for isEmpty")
 	public void testEmpty() {
+		setUp();
 		assertTrue(myIntSet.isEmpty());
 	}
 	
 	@Test
 	@DisplayName("Test case for toString")
 	public void testString() {
+		setUp();
 		myIntSet.add(2);
 		myIntSet.add(4);
 		myIntSet.add(6);
