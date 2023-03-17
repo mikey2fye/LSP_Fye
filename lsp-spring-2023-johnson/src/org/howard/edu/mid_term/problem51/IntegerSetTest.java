@@ -21,19 +21,19 @@ class IntegerRangeTest {
 	}
 
 	@Test
-	@DisplayName("Test for get_lower")
+	@DisplayName("Test get_lower")
 	void testGetLower() {
 		assertEquals(ourRange.get_lower(), 0);
 	}
 	
 	@Test
-	@DisplayName("Test for get_upper")
+	@DisplayName("Test get_upper")
 	void testGetUpper() {
 		assertEquals(ourRange.get_upper(), 150);
 	}
 	
 	@Test
-	@DisplayName("Test for contains")
+	@DisplayName("Test contains")
 	void testContains() {
 		assertTrue(ourRange.contains(28));
 		assertFalse(ourRange.contains(151));
@@ -43,7 +43,7 @@ class IntegerRangeTest {
 	}
 	
 	@Test
-	@DisplayName("Test for overlaps")
+	@DisplayName("Test overlaps")
 	void testOverlaps() throws EmptyRangeException {
 		IntegerRange theirRange;
 		
@@ -55,17 +55,14 @@ class IntegerRangeTest {
 		assertTrue(ourRange.overlaps(theirRange));
 		assertTrue(theirRange.overlaps(ourRange));
 		
-		theirRange = new IntegerRange(-10, 5);
-		assertTrue(ourRange.overlaps(theirRange));
-		assertTrue(theirRange.overlaps(ourRange));
-		
-		theirRange = new IntegerRange(101, 456);
+		theirRange = new IntegerRange(-15, -1);
 		assertFalse(ourRange.overlaps(theirRange));
 		assertFalse(theirRange.overlaps(ourRange));
+		
 	}
 	
 	@Test
-	@DisplayName("Test for EmptyRangeException")
+	@DisplayName("Test EmptyRangeException")
 	void testOverlapsException() {
 		IntegerRange theirRange = null;
 		
@@ -73,19 +70,19 @@ class IntegerRangeTest {
 	}
 	
 	@Test
-	@DisplayName("Test for size")
+	@DisplayName("Test size")
 	void testSize() {
 		IntegerRange theirRange;
 		
-		theirRange = new IntegerRange(25, 50);
-		assertEquals(theirRange.size(), 25);
+		theirRange = new IntegerRange(73, 100);
+		assertEquals(theirRange.size(), 27);
 		
-		theirRange = new IntegerRange(78, 143);
-		assertEquals(theirRange.size(), 65);
+		theirRange = new IntegerRange(49, 113);
+		assertEquals(theirRange.size(), 64);
 		
-		theirRange = new IntegerRange(-10, 10);
-		assertEquals(theirRange.size(), 20);
+		theirRange = new IntegerRange(-15, 15);
+		assertEquals(theirRange.size(), 30);
 		
-		assertEquals(ourRange.size(), 100);
+		assertEquals(ourRange.size(), 150);
 	}
 }

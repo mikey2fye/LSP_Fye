@@ -30,7 +30,7 @@ public class IntegerRange implements Range {
 	
 	public boolean overlaps(Range other) throws EmptyRangeException {
 		if (other == null) {
-			throw new EmptyRangeException("The range is empty");
+			throw new EmptyRangeException("Empty Range");
 		}
 		else {
 			if (get_lower() >= other.get_lower() && (get_upper() <= other.get_upper() || get_upper() >= other.get_upper())) {
