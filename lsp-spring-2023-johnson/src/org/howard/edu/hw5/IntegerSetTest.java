@@ -157,17 +157,26 @@ public class IntegerSetTest extends junit.framework.TestCase{
 	@DisplayName("Test case for union")
 	public void testUnion() {
 		setUp();
-		IntegerSet compareSet = new IntegerSet();
-		myIntSet.add(1);
+		IntegerSet myOtherSet = new IntegerSet();
 		myIntSet.add(2);
-		myIntSet.add(3);
 		myIntSet.add(4);
+		myIntSet.add(6);
+		myIntSet.add(8);
 		
-		compareSet.add(5);
+		myOtherSet.add(10);
+		myOtherSet.add(12);
+		
+		myIntSet.union(myOtherSet);
+		
+		IntegerSet compareSet = new IntegerSet();
+		compareSet.add(2);
+		compareSet.add(4);
 		compareSet.add(6);
+		compareSet.add(8);
+		compareSet.add(10);
+		compareSet.add(12);
 		
-		myIntSet.union(compareSet);
-		assertEquals(myIntSet, new ArrayList<Integer>(Arrays.asList(1, 2, 3, 4, 5, 6)));
+		assertEquals(myIntSet, compareSet);
 		tearDown();
 	}
 	
