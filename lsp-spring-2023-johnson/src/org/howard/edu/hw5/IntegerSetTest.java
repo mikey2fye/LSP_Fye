@@ -3,6 +3,8 @@ import org.howard.edu.hw5.IntegerSet.IntegerSetException;
 import org.howard.edu.hw5.IntegerSet;
 import java.util.*;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertThrows;
+
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -116,7 +118,7 @@ public class IntegerSetTest extends junit.framework.TestCase{
 	@DisplayName("Test smallest exception")
 	public void testSmallestException() {
 		setUp();
-		assertThrows(IntegerSetException.class, () -> my_set.smallest());
+		assertThrows(IntegerSetException.class, () -> myIntSet.smallest());
 		tearDown();
 	}
 	
