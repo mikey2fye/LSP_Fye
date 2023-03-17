@@ -12,7 +12,7 @@ class IntegerRangeTest {
 	
 	@BeforeEach
 	void setUp() throws Exception {
-		ourRange = new IntegerRange(0, 100);
+		ourRange = new IntegerRange(0, 150);
 	}
 
 	@AfterEach
@@ -29,16 +29,17 @@ class IntegerRangeTest {
 	@Test
 	@DisplayName("Test for get_upper")
 	void testGetUpper() {
-		assertEquals(ourRange.get_upper(), 100);
+		assertEquals(ourRange.get_upper(), 150);
 	}
 	
 	@Test
 	@DisplayName("Test for contains")
 	void testContains() {
-		assertTrue(ourRange.contains(56));
-		assertFalse(ourRange.contains(789));
-		assertFalse(ourRange.contains(-34));
-		assertTrue(ourRange.contains(100));
+		assertTrue(ourRange.contains(28));
+		assertFalse(ourRange.contains(151));
+		assertFalse(ourRange.contains(-92));
+		assertTrue(ourRange.contains(101));
+		assertFalse(ourRange.contains(700));
 	}
 	
 	@Test
