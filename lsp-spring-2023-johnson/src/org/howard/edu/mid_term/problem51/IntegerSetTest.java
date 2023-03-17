@@ -8,83 +8,83 @@ import org.junit.jupiter.api.DisplayName;
 
 class IntegerRangeTest {
 
-	IntegerRange my_range;
+	IntegerRange ourRange;
 	
 	@BeforeEach
 	void setUp() throws Exception {
-		my_range = new IntegerRange(0, 100);
+		ourRange = new IntegerRange(0, 100);
 	}
 
 	@AfterEach
 	void tearDown() throws Exception {
-		my_range = null;
+		ourRange = null;
 	}
 
 	@Test
 	@DisplayName("Test for get_lower")
 	void testGetLower() {
-		assertEquals(my_range.get_lower(), 0);
+		assertEquals(ourRange.get_lower(), 0);
 	}
 	
 	@Test
 	@DisplayName("Test for get_upper")
 	void testGetUpper() {
-		assertEquals(my_range.get_upper(), 100);
+		assertEquals(ourRange.get_upper(), 100);
 	}
 	
 	@Test
 	@DisplayName("Test for contains")
 	void testContains() {
-		assertTrue(my_range.contains(56));
-		assertFalse(my_range.contains(789));
-		assertFalse(my_range.contains(-34));
-		assertTrue(my_range.contains(100));
+		assertTrue(ourRange.contains(56));
+		assertFalse(ourRange.contains(789));
+		assertFalse(ourRange.contains(-34));
+		assertTrue(ourRange.contains(100));
 	}
 	
 	@Test
 	@DisplayName("Test for overlaps")
 	void testOverlaps() throws EmptyRangeException {
-		IntegerRange your_range;
+		IntegerRange theirRange;
 		
-		your_range = new IntegerRange(50, 75);
-		assertTrue(my_range.overlaps(your_range));
-		assertTrue(your_range.overlaps(my_range));
+		theirRange = new IntegerRange(50, 75);
+		assertTrue(ourRange.overlaps(theirRange));
+		assertTrue(theirRange.overlaps(theirRange));
 		
-		your_range = new IntegerRange(89, 143);
-		assertTrue(my_range.overlaps(your_range));
-		assertTrue(your_range.overlaps(my_range));
+		theirRange = new IntegerRange(89, 143);
+		assertTrue(ourRange.overlaps(theirRange));
+		assertTrue(theirRange.overlaps(ourRange));
 		
-		your_range = new IntegerRange(-10, 5);
-		assertTrue(my_range.overlaps(your_range));
-		assertTrue(your_range.overlaps(my_range));
+		theirRange = new IntegerRange(-10, 5);
+		assertTrue(ourRange.overlaps(theirRange));
+		assertTrue(theirRange.overlaps(ourRange));
 		
-		your_range = new IntegerRange(101, 456);
-		assertFalse(my_range.overlaps(your_range));
-		assertFalse(your_range.overlaps(my_range));
+		theirRange = new IntegerRange(101, 456);
+		assertFalse(ourRange.overlaps(theirRange));
+		assertFalse(theirRange.overlaps(ourRange));
 	}
 	
 	@Test
 	@DisplayName("Test for EmptyRangeException")
 	void testOverlapsException() {
-		IntegerRange your_range = null;
+		IntegerRange theirRange = null;
 		
-		assertThrows(EmptyRangeException.class, () -> my_range.overlaps(your_range));
+		assertThrows(EmptyRangeException.class, () -> ourRange.overlaps(theirRange));
 	}
 	
 	@Test
 	@DisplayName("Test for size")
 	void testSize() {
-		IntegerRange your_range;
+		IntegerRange theirRange;
 		
-		your_range = new IntegerRange(25, 50);
-		assertEquals(your_range.size(), 25);
+		theirRange = new IntegerRange(25, 50);
+		assertEquals(theirRange.size(), 25);
 		
-		your_range = new IntegerRange(78, 143);
-		assertEquals(your_range.size(), 65);
+		theirRange = new IntegerRange(78, 143);
+		assertEquals(theirRange.size(), 65);
 		
-		your_range = new IntegerRange(-10, 10);
-		assertEquals(your_range.size(), 20);
+		theirRange = new IntegerRange(-10, 10);
+		assertEquals(theirRange.size(), 20);
 		
-		assertEquals(my_range.size(), 100);
+		assertEquals(ourRange.size(), 100);
 	}
 }
