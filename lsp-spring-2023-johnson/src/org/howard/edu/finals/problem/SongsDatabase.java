@@ -43,7 +43,7 @@ public class SongsDatabase {
      * Return genre, i.e., jazz, given a song title 
      * 
      * @param songTitle
-     * @return the genre associated with that song
+     * @return the genre associated with given song
      */
     public String getGenre(String title) {
         for (String genre : map.keySet()) {
@@ -52,6 +52,6 @@ public class SongsDatabase {
                 return genre;
             }
         }
-        return "That song is not in the Database.";
+        return "This song is not in the Database.";
     }
 }
