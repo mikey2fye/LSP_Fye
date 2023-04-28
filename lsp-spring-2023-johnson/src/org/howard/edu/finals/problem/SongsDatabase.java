@@ -45,7 +45,7 @@ public class SongsDatabase {
      * @param songTitle
      * @return the genre associated with given song
      */
-    public String getGenre(String title) {
+    public String getGenreOfSong(String title) {
         for (String genre : map.keySet()) {
             HashSet<String> songSet = map.get(genre);
             if (songSet.contains(title)) {
